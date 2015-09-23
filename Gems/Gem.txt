@@ -1,0 +1,14 @@
+This is a list of the current Gems with their Colors and Elements. 
+
+= Colors = Gems       = Elements    =
+: Green  : Emerald    : Wind        :
+: Red    : Ruby       : Fire        :
+: Blue   : Sapphire   : Water       :
+: Yellow : Topaz      : Electricity :
+: Purple : Amethyst   : Poison      :
+: Cyan   : Aquamarine : Ice         :
+: Black  : Obsidian   : Null        :
+: White  : Opal       : Void        :
+: Brown  : Granite    : Earth       :
+
+Oh noes!!
