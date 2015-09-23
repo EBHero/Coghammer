@@ -1,2 +1,1 @@
-# Coghammer
-A cool repository full of neat tools.
+Coghammer is a cool tool.
