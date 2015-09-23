@@ -1,0 +1,25 @@
+package toolbox;
+
+public class Units 
+{
+	//Some collection of unit parameters
+	private int unitID;
+	private String unitName;
+	private Unittypes unitType1;
+
+	
+	public Units(String name)
+	{
+		unitName = name;
+	}
+	public void getUnitInfo()
+	{
+		System.out.printf("Unit Name: %s\n", unitName);
+		System.out.printf("Unit Type: %s %s\n", unitType1.getType1Name(), unitType1.getType2Name());
+	}
+	public void setType1(Unittypes yourType1)
+	{
+		unitType1 = yourType1;
+	}
+
+}

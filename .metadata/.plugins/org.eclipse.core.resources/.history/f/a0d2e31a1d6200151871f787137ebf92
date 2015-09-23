@@ -1,0 +1,14 @@
+package toolbox;
+
+public class Units 
+{
+	//Some collection of unit parameters
+	private int unitID;
+	private String unitName;
+	private Unittypes unitType;
+	
+	public Units(String name)
+	{
+		
+	}
+}

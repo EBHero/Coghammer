@@ -1,0 +1,35 @@
+package toolbox;
+
+/**
+ * See UnitRanges.txt for more info.
+ */
+enum TypeDefines
+{
+	NONE, MELEE, RANGED, MOUNTED, SUPPORT, FLYING, MARINE, HYBRID
+	
+}
+public class Unittypes 
+{
+	//A collection of unit types, there's not too many though.
+	private String type1Name;
+	private String type2Name;
+	private int id;
+	
+	public Unittypes meleeUnit = new Unittypes();
+	Unittypes rangedUnit = new Unittypes();
+	Unittypes hybridUnit = new Unittypes();
+	Unittypes mountedUnit = new Unittypes();
+	
+	public int getTypeID()
+	{
+		return id;
+	}
+	public String getType1Name()
+	{
+		return type1Name;
+	}
+	public String getType2Name()
+	{
+		return type2Name;
+	}
+}

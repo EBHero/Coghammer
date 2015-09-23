@@ -1,0 +1,57 @@
+Legend
+======
+U - Unit Position
+- - Invalid Target Cells
+X - Valid Target Cells
+
+
+MELEE/MARINE(MELEE)/FLYING(MELEE) Range
+      [S]
+   [-][X][-]
+[S][X][U][X][S]
+   [-][X][-]
+      [S]
+S = Spears/Torpedoes
+
+
+RANGED/MARINE(RANGED)/FLYING(RANGED) Range
+            [T]
+         [T][X][T]
+      [T][X][X][X][T]
+   [T][X][-][-][-][X][T]
+[T][X][X][-][U][-][X][X][T]
+   [T][X][-][-][-][X][T]
+      [T][X][X][X][T]
+	     [T][X][T]
+		    [T]
+T = Tower/Seige/Torpedoes
+
+MOUNTED Range
+      [-]
+   [X][X][X]
+[-][X][U][X][-]
+   [X][X][X]
+      [-]
+	  
+HYBRID/SUPPORT Range
+			   [*]
+            [*][X][*]
+         [*][X][X][X][*]
+      [*][X][X][X][X][X][*]
+   [*][X][X][X][X][X][X][X][*]
+[*][X][X][X][X][U][X][X][X][X][*]
+   [*][X][X][X][X][X][X][X][*]
+      [*][X][X][X][X][X][*]
+	     [*][X][X][X][*]
+		    [*][X][*]
+			   [*]
+*Note All HYBRID units have an absolute hitbox of
+[-][X][-]
+[X][A][X]
+[-][X][-]
+Where A is the target location and X are the effected cells
+			
+			
+			
+			
+			

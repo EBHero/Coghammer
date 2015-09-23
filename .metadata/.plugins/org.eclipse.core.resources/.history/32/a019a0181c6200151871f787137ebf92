@@ -1,0 +1,22 @@
+package toolbox;
+
+enum TypeDefines
+{
+	NONE, MELEE, RANGED, MOUNTED, SUPPORT, FLYING, MARINE, HYBRID
+	/*
+	 * MELEE - Units that have a max range of 2 spaces
+	 * RANGED - Units that have a min range of 3 spaces
+	 * 
+	 */
+}
+public class Unittypes 
+{
+	//A collection of unit types, there's not too many though.
+	private String type1Name;
+	private String type2Name;
+	
+	public Unittypes()
+	{
+		
+	}
+}

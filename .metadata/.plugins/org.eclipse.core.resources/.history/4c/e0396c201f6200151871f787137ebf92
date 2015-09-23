@@ -1,0 +1,19 @@
+package toolbox;
+
+public class Units 
+{
+	//Some collection of unit parameters
+	private int unitID;
+	private String unitName;
+	private Unittypes unitType1;
+	private Unittypes unitType2;
+	
+	public Units(String name)
+	{
+		unitName = name;
+	}
+	public void setType1(Unittypes yourType1)
+	{
+		unitType1 = yourType1;
+	}
+}

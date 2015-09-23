@@ -1,14 +1,12 @@
-This is a list of the current Gems with their Colors and Elements. 
+This is a list of the current Gems with their Colors, Elements, and Bonuses. 
 
-= Colors = Gems       = Elements    =
-: Green  : Emerald    : Wind        :
-: Red    : Ruby       : Fire        :
-: Blue   : Sapphire   : Water       :
-: Yellow : Topaz      : Electricity :
-: Purple : Amethyst   : Poison      :
-: Cyan   : Aquamarine : Ice         :
-: Black  : Obsidian   : Null        :
-: White  : Opal       : Void        :
-: Brown  : Granite    : Earth       :
-
-Oh noes!!
+= Colors =    Gems    =   Elements  =        Status        =
+: Green  : Emerald    : Wind        : Speed+               :
+: Red    : Ruby       : Fire        : Attack+              :
+: Blue   : Sapphire   : Water       : Mystic+ (Magic Only) :
+: Yellow : Topaz      : Electricity : Tech+ (Science Only) :
+: Purple : Amethyst   : Poison      : Stealth+             :
+: Cyan   : Aquamarine : Ice         : Sea+                 :
+: Black  : Obsidian   : Null        : None                 :
+: White  : Opal       : Void        : None                 :
+: Brown  : Granite    : Earth       : Mounted+             :

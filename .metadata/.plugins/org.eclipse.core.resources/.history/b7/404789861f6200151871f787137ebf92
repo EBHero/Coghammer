@@ -1,0 +1,13 @@
+package toolbox;
+
+public class Driver 
+{
+	public static void main(String args[])
+	{
+		Units warrior = new Units("Warrior");
+		warrior.setType1(Unittypes.meleeUnit);
+		warrior.set
+		
+		warrior.getUnitInfo();
+	}
+}

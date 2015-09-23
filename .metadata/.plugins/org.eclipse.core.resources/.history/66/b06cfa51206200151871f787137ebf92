@@ -1,0 +1,32 @@
+package toolbox;
+
+public class Driver 
+{
+	public static void main(String args[])
+	{
+		Units warrior = new Units("Warrior");
+		warrior.setType1(Unittypes.meleeUnit);
+		
+		Units mage = new Units("Mage");
+		mage.setType1(Unittypes.hybridUnit);
+		
+		Units priest = new Units("Priest");
+		priest.setType1(Unittypes.hybridUnit);
+		
+		Units archer = new Units("Archer");
+		archer.setType1(Unittypes.rangedUnit);
+		
+		Units horsemen = new Units("Horsemen");
+		horsemen.setType1(Unittypes.mountedMUnit);
+		
+		Units horsearch = new Units("Horse Archer");
+		horsearch.setType1(Unittypes.mountedRUnit);
+		
+		Units battlemage = new Units("Battle Mage");
+		battlemage.setType1(Unittypes.mountedHUnit);
+		
+		
+		horsemen.getUnitInfo();
+		
+	}
+}
