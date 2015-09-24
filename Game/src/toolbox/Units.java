@@ -15,7 +15,10 @@ public class Units
 	public static Units WARRIOR, MAGE, PRIEST, ARCHER, HORSEMEN, CHARARCH, BATTLEMAGE;
 	
 
-	
+	public Units(int unitID)
+	{
+		createUnit(unitID);
+	}
 	private Units(String name)
 	{
 		unitName = name;
@@ -44,6 +47,21 @@ public class Units
 	public int unitID()
 	{
 		return unitID;
+	}
+	public String getUnitName()
+	{
+		return unitName;
+	}
+	public Units createUnit(int unitID)
+	{
+		Units tobeMade = null;
+		if(unitID == 0)
+		{
+			tobeMade= new Units("Warrior");
+			tobeMade.setType1(Unittypes.meleeUnit);
+			tobeMade.configUnit(20, 6, 4);
+		}
+		return tobeMade;
 	}
 	public static void createUnits()
 	{
