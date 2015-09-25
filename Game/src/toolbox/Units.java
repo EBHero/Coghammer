@@ -17,7 +17,7 @@ public class Units
 
 	public Units(int unitID)
 	{
-		createUnit(unitID);
+		this.unitID = unitID;
 	}
 	private Units(String name)
 	{
@@ -60,6 +60,42 @@ public class Units
 			tobeMade= new Units("Warrior");
 			tobeMade.setType1(Unittypes.meleeUnit);
 			tobeMade.configUnit(20, 6, 4);
+		}
+		if(unitID == 1)
+		{
+			tobeMade= new Units("Mage");
+			tobeMade.setType1(Unittypes.hybridUnit);
+			tobeMade.configUnit(14, 4, 4);
+		}
+		if(unitID == 2)
+		{
+			tobeMade= new Units("Priest");
+			tobeMade.setType1(Unittypes.hybridUnit);
+			tobeMade.configUnit(18, 3, 4);
+		}
+		if(unitID == 3)
+		{
+			tobeMade= new Units("Archer");
+			tobeMade.setType1(Unittypes.rangedUnit);
+			tobeMade.configUnit(16, 5, 4);
+		}
+		if(unitID == 4)
+		{
+			tobeMade= new Units("Horsemen");
+			tobeMade.setType1(Unittypes.mountedMUnit);
+			tobeMade.configUnit(20, 6, 7);
+		}
+		if(unitID == 5)
+		{
+			tobeMade= new Units("Chariot Archer");
+			tobeMade.setType1(Unittypes.mountedRUnit);
+			tobeMade.configUnit(14, 5, 7);
+		}
+		if(unitID == 6)
+		{
+			tobeMade= new Units("Battle Mage");
+			tobeMade.setType1(Unittypes.mountedHUnit);
+			tobeMade.configUnit(16, 4, 7);
 		}
 		return tobeMade;
 	}

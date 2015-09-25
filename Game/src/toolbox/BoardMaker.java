@@ -19,7 +19,7 @@ public class BoardMaker implements ActionListener
 {
 	private int rows;
 	private int cols;
-	public Garrison playerGar = new Garrison();
+	
 	
 	
 	public BoardMaker(int rows, int cols)
@@ -149,29 +149,36 @@ public class BoardMaker implements ActionListener
 		
 		menuItem = new JMenuItem("Warrior: 2 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Mage: 2 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Priest: 2 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Archer: 2 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Horsemen: 3 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Chariot Archer: 4 Gold");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		subMenu1.add(menuItem);
 		
 		menuItem = new JMenuItem("Battle Mage: 4 Gold");
+		menuItem.addActionListener(this);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.ALT_MASK));
 		subMenu1.add(menuItem);
 		
@@ -232,60 +239,132 @@ public class BoardMaker implements ActionListener
 		if(e.getActionCommand().equals("Open"))
 		{
 			System.out.printf("\nOpenning Garrison\n");
-			playerGar.showGarrison();
+			Garrison.listGar();
+			Garrison.showGarrison();
+			
+		}
+		if(e.getActionCommand().equals("Warrior: 2 Gold"))
+		{
+			Units yourUnit = new Units(0);
+			yourUnit = yourUnit.createUnit(0);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.WARRIOR.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
 		}
 		if(e.getActionCommand().equals("Warrior"))
 		{
 			Units yourUnit = new Units(0);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(0);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.WARRIOR.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Mage: 2 Gold"))
+		{
+			Units yourUnit = new Units(1);
+			yourUnit = yourUnit.createUnit(1);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.MAGE.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Mage"))
 		{
 			Units yourUnit = new Units(1);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(1);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.MAGE.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Priest: 2 Gold"))
+		{
+			Units yourUnit = new Units(2);
+			yourUnit = yourUnit.createUnit(2);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.PRIEST.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Priest"))
 		{
 			Units yourUnit = new Units(2);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(2);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.PRIEST.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Archer: 2 Gold"))
+		{
+			Units yourUnit = new Units(3);
+			yourUnit = yourUnit.createUnit(3);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.ARCHER.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Archer"))
 		{
 			Units yourUnit = new Units(3);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(3);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.ARCHER.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Horsemen: 3 Gold"))
+		{
+			Units yourUnit = new Units(4);
+			yourUnit = yourUnit.createUnit(4);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.HORSEMEN.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Horsemen"))
 		{
 			Units yourUnit = new Units(4);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(4);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.HORSEMEN.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Chariot Archer: 4 Gold"))
+		{
+			Units yourUnit = new Units(5);
+			yourUnit = yourUnit.createUnit(5);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.CHARARCH.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Chariot Archer"))
 		{
 			Units yourUnit = new Units(5);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(5);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.CHARARCH.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
 		}
+		if(e.getActionCommand().equals("Battle Mage: 4 Gold"))
+		{
+			Units yourUnit = new Units(6);
+			yourUnit = yourUnit.createUnit(6);
+			if(Garrison.sendSupply(yourUnit) == 0)
+				System.out.printf("Added a %s.\n", Units.BATTLEMAGE.getUnitName());
+			else
+				System.out.printf("Supply Full\n");
+		}
 		if(e.getActionCommand().equals("Battle Mage"))
 		{
 			Units yourUnit = new Units(6);
-			if(playerGar.addUnit(yourUnit) == 0)
+			yourUnit = yourUnit.createUnit(6);
+			if(Garrison.addUnit(yourUnit) == 0)
 				System.out.printf("Added a %s.\n", Units.BATTLEMAGE.getUnitName());
 			else
 				System.out.printf("Vanguard Full\n");
