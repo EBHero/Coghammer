@@ -20,8 +20,14 @@ public class BoardMaker implements ActionListener
 	private int rows;
 	private int cols;
 	
-	
-	
+	public int getRows()
+	{
+		return rows;
+	}
+	public int getCols()
+	{
+		return cols;
+	}
 	public BoardMaker(int rows, int cols)
 	{
 		this.rows = rows;
@@ -225,6 +231,7 @@ public class BoardMaker implements ActionListener
 		frame.getContentPane().add(grid, BorderLayout.CENTER);
 		
 		frame.setSize(700, 670);
+		frame.setBounds(400,300, 700, 670);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		
