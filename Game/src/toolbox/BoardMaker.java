@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
@@ -19,6 +20,8 @@ public class BoardMaker implements ActionListener
 {
 	private int rows;
 	private int cols;
+	public JFrame frame;
+	public EventRunner ER = new EventRunner();
 	
 	public int getRows()
 	{
@@ -33,7 +36,15 @@ public class BoardMaker implements ActionListener
 		this.rows = rows;
 		this.cols = cols;
 		
-		JFrame frame = new JFrame("Coghammer");
+		//Initialize 7 starting units
+		for(int i = 0; i < 7; i++)
+		{
+			Units initUnit = new Units(i);
+			initUnit = initUnit.createUnit(i);
+			Garrison.addUnit(initUnit);
+		}
+		
+		frame = new JFrame("Coghammer");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Font f = new Font("sans-serif", Font.PLAIN, 18);
@@ -56,6 +67,11 @@ public class BoardMaker implements ActionListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menuBar.add(menu);
 		menu.addSeparator();
+		
+		menuItem = new JMenuItem("Play");
+		menuItem.addActionListener(this);
+		menu.add(menuItem);
+		
 		subMenu1 = new JMenu("Add Units - Debug");
 		subMenu1.setMnemonic(KeyEvent.VK_A);
 		menuItem = new JMenuItem("Warrior");
@@ -145,9 +161,10 @@ public class BoardMaker implements ActionListener
 		menuBar.add(menu);
 		menu.addSeparator();
 		
-		subMenu1 = new JMenu("Economics");
-		subMenu1.setMnemonic(KeyEvent.VK_G);
-		menu.add(subMenu1);
+		menuItem = new JMenuItem("Economics");
+		menuItem.setMnemonic(KeyEvent.VK_G);
+		menuItem.addActionListener(this);
+		menu.add(menuItem);
 		
 		subMenu1 = new JMenu("Buy Units");
 		subMenu1.setMnemonic(KeyEvent.VK_B);
@@ -245,19 +262,51 @@ public class BoardMaker implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getActionCommand().equals("Open"))
 		{
-			System.out.printf("\nOpenning Garrison\n");
-			Garrison.listGar();
+			System.out.printf("\nOpening Garrison\n");
+			//Garrison.listGar();
 			Garrison.showGarrison();
 			
+		}
+		if(e.getActionCommand().equals("DONE"))
+		{
+			ER.RunPlayerTurnPhase2(frame, this);
+		}
+		if(e.getActionCommand().equals("UNDO"))
+		{
+			if(Garrison.yourSup.isEmpty())
+			{
+				JOptionPane.showMessageDialog(frame, "There are no units in the Supply.");
+			}
+			else
+			{
+				ER.decToSupply();
+				JOptionPane.showMessageDialog(frame,"Removed: " + Garrison.yourSup.get(Garrison.yourSup.size()-1).getUnitName());
+				Garrison.yourSup.remove(Garrison.yourSup.size()-1);
+			}
+		}
+		if(e.getActionCommand().equals("Play"))
+		{
+			ER.RunPlayerTurnPhase1(frame, this);
+		}
+		if(e.getActionCommand().equals("Economics"))
+		{
+			System.out.printf("\nOpening Econ Tab\n");
+			Economics.showEconTab();
 		}
 		if(e.getActionCommand().equals("Warrior: 2 Gold"))
 		{
 			Units yourUnit = new Units(0);
 			yourUnit = yourUnit.createUnit(0);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.WARRIOR.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{	
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.WARRIOR.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Warrior"))
 		{
@@ -272,10 +321,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(1);
 			yourUnit = yourUnit.createUnit(1);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.MAGE.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.MAGE.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Mage"))
 		{
@@ -290,10 +345,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(2);
 			yourUnit = yourUnit.createUnit(2);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.PRIEST.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.PRIEST.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Priest"))
 		{
@@ -308,10 +369,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(3);
 			yourUnit = yourUnit.createUnit(3);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.ARCHER.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.ARCHER.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Archer"))
 		{
@@ -326,10 +393,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(4);
 			yourUnit = yourUnit.createUnit(4);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.HORSEMEN.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.HORSEMEN.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Horsemen"))
 		{
@@ -344,10 +417,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(5);
 			yourUnit = yourUnit.createUnit(5);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.CHARARCH.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.CHARARCH.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Chariot Archer"))
 		{
@@ -362,10 +441,16 @@ public class BoardMaker implements ActionListener
 		{
 			Units yourUnit = new Units(6);
 			yourUnit = yourUnit.createUnit(6);
-			if(Garrison.sendSupply(yourUnit) == 0)
-				System.out.printf("Added a %s.\n", Units.BATTLEMAGE.getUnitName());
-			else
-				System.out.printf("Supply Full\n");
+			if(ER.checkSupplyLimit() > 0)
+			{
+				if(Garrison.sendSupply(yourUnit) == 0)
+				{
+					System.out.printf("Added a %s.\n", Units.BATTLEMAGE.getUnitName());
+					ER.incToSupply();
+				}
+				else
+					System.out.printf("Supply Full\n");
+			}
 		}
 		if(e.getActionCommand().equals("Battle Mage"))
 		{

@@ -103,7 +103,7 @@ public class Garrison implements ActionListener
 			vanField.setFont(f);
 			garLine.add(vanField);
 			JButton deploy = new JButton("DEPLOY");
-			JButton supply = new JButton("SUPPLY");
+			JButton supply = new JButton("SEND Unit #: " + (i+1));
 			supply.addActionListener(new Garrison());
 			garLine.add(deploy);
 			garLine.add(supply);
@@ -120,7 +120,7 @@ public class Garrison implements ActionListener
 			supField.setDisabledTextColor(Color.BLACK);
 			supField.setFont(f);
 			supLine.add(supField);
-			JButton swap = new JButton("SWAP");
+			JButton swap = new JButton("SWAP Unit #: " + (i+1));
 			swap.addActionListener(new Garrison());
 			JButton delete = new JButton("DELETE Unit #: " + (i+1));
 			delete.addActionListener(new Garrison());
@@ -145,6 +145,56 @@ public class Garrison implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		if(e.getActionCommand().equals("SWAP Unit #: 1"))
+		{
+			if(Garrison.addUnit(Garrison.yourSup.get(0)) == 0)
+			{
+				JOptionPane.showMessageDialog(frame, "Your " + Garrison.yourSup.get(0).getUnitName() + " was added to the Vanguard.");
+				Garrison.yourSup.remove(0);
+			}
+			else
+				JOptionPane.showMessageDialog(frame, "Your Vanguard is Full.");
+		}
+		if(e.getActionCommand().equals("SWAP Unit #: 2"))
+		{
+			if(Garrison.addUnit(Garrison.yourSup.get(1)) == 0)
+			{
+				JOptionPane.showMessageDialog(frame, "Your " + Garrison.yourSup.get(1).getUnitName() + " was added to the Vanguard.");
+				Garrison.yourSup.remove(1);
+			}
+			else
+				JOptionPane.showMessageDialog(frame, "Your Vanguard is Full.");
+		}
+		if(e.getActionCommand().equals("SWAP Unit #: 3"))
+		{
+			if(Garrison.addUnit(Garrison.yourSup.get(2)) == 0)
+			{
+				JOptionPane.showMessageDialog(frame, "Your " + Garrison.yourSup.get(2).getUnitName() + " was added to the Vanguard.");
+				Garrison.yourSup.remove(2);
+			}
+			else
+				JOptionPane.showMessageDialog(frame, "Your Vanguard is Full.");
+		}
+		if(e.getActionCommand().equals("SWAP Unit #: 4"))
+		{
+			if(Garrison.addUnit(Garrison.yourSup.get(3)) == 0)
+			{
+				JOptionPane.showMessageDialog(frame, "Your " + Garrison.yourSup.get(3).getUnitName() + " was added to the Vanguard.");
+				Garrison.yourSup.remove(3);
+			}
+			else
+				JOptionPane.showMessageDialog(frame, "Your Vanguard is Full.");
+		}
+		if(e.getActionCommand().equals("SWAP Unit #: 5"))
+		{
+			if(Garrison.addUnit(Garrison.yourSup.get(4)) == 0)
+			{
+				JOptionPane.showMessageDialog(frame, "Your " + Garrison.yourSup.get(4).getUnitName() + " was added to the Vanguard.");
+				Garrison.yourSup.remove(4);
+			}
+			else
+				JOptionPane.showMessageDialog(frame, "Your Vanguard is Full.");
+		}
 		if(e.getActionCommand().equals("DELETE Unit #: 1"))
 		{
 			int n = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this Unit?","Delete Unit?", JOptionPane.YES_NO_OPTION);

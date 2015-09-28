@@ -6,9 +6,10 @@ public class Driver
 	{
 		Units.createUnits();
 		
-		Units.HORSEMEN.getUnitInfo();
 		
 		BoardMaker startBoard = new BoardMaker(12,12);
+		
+		
 		
 	}
 }

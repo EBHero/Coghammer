@@ -5,6 +5,8 @@ public class Units
 	//Some collection of unit parameters
 	private int unitID;
 	private String unitName;
+	
+	
 	private Unittypes unitType1;
 	private int cost;
 	private int move;
@@ -14,6 +16,7 @@ public class Units
 	//Some collection of units
 	public static Units WARRIOR, MAGE, PRIEST, ARCHER, HORSEMEN, CHARARCH, BATTLEMAGE;
 	
+	
 
 	public Units(int unitID)
 	{
@@ -22,6 +25,7 @@ public class Units
 	private Units(String name)
 	{
 		unitName = name;
+		
 	}
 	public void getUnitInfo()
 	{
@@ -38,12 +42,77 @@ public class Units
 		unitType1 = yourType1;
 		unitID = yourType1.getTypeID();
 		cost = yourType1.getCost();
+		
 	}
 	private void configUnit(int HP, int AP, int move)
 	{
 		this.HP = HP; this.AP = AP; this.move = move;
 	}
-	
+	public static String getUnitName(int id)
+	{
+		String uName = "";
+		switch(id)
+		{
+			case 0:
+				uName = "Warrior";
+				break;
+			case 1:
+				uName = "Mage";
+				break;
+			case 2:
+				uName = "Priest";
+				break;
+			case 3:
+				uName = "Archer";
+				break;
+			case 4:
+				uName = "Horsemen";
+				break;
+			case 5:
+				uName = "Chariot Archer";
+				break;
+			case 6:
+				uName = "Battle Mage";
+				break;
+			default:
+				break;
+		}
+		
+		return uName;
+	}
+	public static int getUnitCost(int id)
+	{
+		int cost = 0;
+		
+		switch(id)
+		{
+			case 0:
+				cost = 2;
+				break;
+			case 1:
+				cost = 2;
+				break;
+			case 2:
+				cost = 2;
+				break;
+			case 3:
+				cost = 2;
+				break;
+			case 4:
+				cost = 3;
+				break;
+			case 5:
+				cost = 4;
+				break;
+			case 6:
+				cost = 4;
+				break;
+			default:
+				break;
+		}
+		
+		return cost;
+	}
 	public int unitID()
 	{
 		return unitID;
